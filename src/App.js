@@ -1,6 +1,7 @@
 import Card from "./components/Card";
 import Shapka from "./components/Header";
 import Drawer from "./components/Drawer";
+import React from "react";
 
 const arr = [
   {
@@ -29,11 +30,19 @@ const arr = [
 ];
 
 function App() {
+  const [cartOpened, setCartOpened] = React.useState(false);
+  // const openCart = () => {
+  //   setCartOpened(true);
+  // };
+  // const closeCart = () => {
+  //   setCartOpened(false);
+  // };
+
   return (
     <div className="wrapper clear">
-      <Drawer />
+      {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
 
-      <Shapka />
+      <Shapka onClickCart={() => setCartOpened(true)} />
 
       <div className="content p-40">
         <div className="d-flex mb-40 justify-between align-center">
