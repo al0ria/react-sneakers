@@ -61,12 +61,21 @@ button {
   border: 1px solid #f3f3f3;
   padding: 0 15px;
   border-radius: 20px;
+  position: relative;
 
   input {
     border: 0;
     font-size: 16px;
     width: 200px;
     padding: 13px;
+  }
+
+  .clear {
+    position: absolute;
+    top: 14px;
+    right: 15px;
+    height: 18px;
+    width: 18px;
   }
 }
 
@@ -94,10 +103,16 @@ button {
       margin: 0;
     }
 
-    .cart {
+    .exist {
+      display: flex;
+      flex-direction: column;
       flex: 1;
-      overflow: auto;
-      margin-bottom: 40px;
+
+      .cart {
+        flex: 1;
+        overflow: auto;
+        margin-bottom: 40px;
+      }
     }
   }
 }
