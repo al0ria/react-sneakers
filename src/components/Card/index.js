@@ -1,20 +1,14 @@
 import React from "react";
 import ContentLoader from "react-content-loader";
+import AppContext from "../../context";
 import styles from "./Card.module.scss";
 
-function Card(
-  /*props*/ { name: title, price, imgUrl, onAdd, onFavourite, favorited = false, id, added = false, loading },
-) {
-  const [isAdded, setIsAdded] = React.useState(false);
+function Card({ name: title, price, imgUrl, onAdd, onFavourite, favorited = false, id, loading }) {
+  const { isItemAdded } = React.useContext(AppContext);
   const [isFavourite, setIsFavourite] = React.useState(favorited);
 
-  React.useEffect(() => {
-    setIsAdded(added);
-  }, [added]); //в хоум рендерится сначала массив загрузки и в верхний стейт записывается один раз только одно значение - из этого блядского пустого массива, поэтому обновляем стейт как только обновляется аддед.
-
   const onClickPlus = () => {
-    setIsAdded(!isAdded);
-    onAdd({ id, title, price, imgUrl });
+    onAdd({ id, parentId: id, title, price, imgUrl });
   };
 
   const onClickFavourite = () => {
@@ -41,8 +35,6 @@ function Card(
         </ContentLoader>
       ) : (
         <>
-          {" "}
-          {/* <--- так называемый фрагмент. Типа див, но в разметке его не видно. Чисто реактовская штучка */}
           <div className={styles.Favourite}>
             <img onClick={onClickFavourite} src={isFavourite ? "like-2.svg" : "like-1.svg"} alt="unliked" />
           </div>
@@ -54,7 +46,14 @@ function Card(
               <b>{price} руб.</b>
             </div>
 
-            <img className={styles.Plus} onClick={onClickPlus} src={isAdded ? "checked.svg" : "plus.svg"} alt="plus" />
+            {onAdd && (
+              <img
+                className={styles.Plus}
+                onClick={onClickPlus}
+                src={isItemAdded(id) ? "checked.svg" : "plus.svg"}
+                alt="plus"
+              />
+            )}
           </div>
         </>
       )}

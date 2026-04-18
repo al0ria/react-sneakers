@@ -1,6 +1,10 @@
 import Card from "../components/Card";
+import React from "react";
+import AppContext from "../context";
 
 function Favourites({ items, itemsCartAdd, favouriteCartAdd }) {
+  const state = React.useContext(AppContext); //если эпконтекст изменится, то сохраняй все актуальные данные в стейт
+
   return (
     <div className="content p-40">
       <div className="d-flex mb-40 justify-between align-center">
@@ -11,10 +15,10 @@ function Favourites({ items, itemsCartAdd, favouriteCartAdd }) {
       </div>
 
       <div className="d-flex flex-wrap">
-        {items.map((item, index) => (
+        {state.favouriteCart.map((item, index) => (
           <Card
             key={item.id}
-            title={item.name}
+            name={item.title}
             price={item.price}
             imgUrl={item.imgUrl}
             onAdd={(obj) => itemsCartAdd(obj)}

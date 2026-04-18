@@ -79,44 +79,6 @@ button {
   }
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-
-  .drawer {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    right: 0;
-    background-color: #fff;
-    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.06);
-    padding: 20px;
-    height: 100%;
-    width: 420px;
-
-    h2 {
-      margin: 0;
-    }
-
-    .exist {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-
-      .cart {
-        flex: 1;
-        overflow: auto;
-        margin-bottom: 40px;
-      }
-    }
-  }
-}
-
 .removBtn {
   cursor: pointer;
   opacity: 0.5;
@@ -124,69 +86,6 @@ button {
 
   &:hover {
     opacity: 1;
-  }
-}
-
-.cart-item {
-  border: 1px solid #f3f3f3;
-  border-radius: 20px;
-  overflow: hidden;
-  padding: 20px;
-
-  p {
-    font-size: 16px;
-    margin: 0;
-  }
-
-  b {
-    font-size: 13px;
-  }
-
-  .cartImg {
-    height: 70px;
-    width: 70px;
-    background-size: contain;
-    background-position: 0 -2px;
-    background-repeat: no-repeat;
-    margin-right: 20px;
-  }
-}
-
-.cartTotalBlock {
-  ul {
-    margin-bottom: 30px !important;
-
-    div {
-      flex: 1;
-      height: 1px;
-      border-bottom: 1px dashed #dfdfdf;
-      position: relative;
-      top: -4px;
-      margin: 0 7px;
-    }
-
-    li {
-      display: flex;
-      align-items: flex-end;
-      margin-bottom: 20px;
-    }
-  }
-
-  .greenButton {
-    position: relative;
-
-    &:hover {
-      img {
-        transform: translateX(5px);
-      }
-    }
-
-    img {
-      position: absolute;
-      right: 30px;
-      top: 20px;
-      transition: transform 0.2s ease-in-out;
-    }
   }
 }
 
@@ -207,5 +106,17 @@ button {
 
   &:active {
     background-color: darken($color: #9dd558, $amount: 5%);
+  }
+}
+
+@keyframes button-loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
   }
 }

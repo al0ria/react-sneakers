@@ -18,7 +18,7 @@ function Home({
         key={isLoading ? index : item.id}
         onAdd={(obj) => itemsCartAdd(obj)}
         onFavourite={(obj) => favouriteCartAdd(obj)}
-        added={itemsCart.some((obj) => Number(obj.id) === Number(item.id))}
+        // added={itemscart.some(....))}
         loading={isLoading}
         {...item}
       />
@@ -38,23 +38,7 @@ function Home({
         </div>
       </div>
 
-      <div className="d-flex flex-wrap">
-        {
-          renderItems()
-
-          /* {items
-          .filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase()))
-          .map((item, index) => (
-            <Card
-              key={item.id}
-              onAdd={(obj) => itemsCartAdd(obj)}
-              onFavourite={(obj) => favouriteCartAdd(obj)}
-              added={itemsCart.some((obj) => Number(obj.id) === Number(item.id))}
-              {...item}
-            />
-          ))} */
-        }
-      </div>
+      <div className="d-flex flex-wrap">{renderItems()}</div>
     </div>
   );
 }
